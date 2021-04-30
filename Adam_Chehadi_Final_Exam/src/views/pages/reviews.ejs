@@ -1,0 +1,42 @@
+<%- include('../partials/header', {my_title:my_title}); %>
+<%- include('../partials/menu'); %>
+
+</br>
+		<div class="container">
+			<h3 style="text-align: center;">Movie Reviews</h3></br>
+			<form action="/reviews/filter" method="get">
+			<div class="row">
+				<div class="col-10"><input class="form-control" type="text" name="query" placeholder="Enter movie title"></div>
+				<div class="col-2"><input class="btn btn-primary" type="submit" value="Filter"></div>
+			</div>
+			</form></br>
+
+			<% console.log(err); %>
+
+			<% if(err) { %>
+				<div class="alert alert-danger">Please try again. Error occured.</div>'
+			<% } %>
+
+			<table class="table table-bordered" id="review_table">
+				<tr>
+					<th>Movie</th>
+					<th>Review</th>
+					<th>Review Date</th>
+				</tr>
+				<% if(data) {
+				var cell = '';
+				data.forEach(function(movie) {
+					cell += '<tr>';
+					cell += '<td>'+ movie.movie_name +'</td>';
+					cell += '<td>'+ movie.review_text +'</td>';
+					cell += '<td>'+ movie.review_date +'</td>';
+					cell += '</tr>';
+				}); %>
+				<%- cell %>
+				<% } %>
+			</table>
+		</div>
+	</body>
+</html>
+
+<%- include('../partials/footer'); %>

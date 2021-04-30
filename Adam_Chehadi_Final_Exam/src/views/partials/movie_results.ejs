@@ -1,0 +1,62 @@
+<%- console.log("***Title: " + items.Title); %>
+<%- console.log("***Poster: " + items.Poster); %>
+<%- console.log("***Cast: " + items.Actors); %>
+<%- console.log("***Genre: " + items.Genre); %>
+<%- console.log("***Plot: " + items.Plot); %>
+<%- console.log("***Release Date: " + items.Released); %>
+<%- console.log("***Ratings: " + items.Ratings); %>
+
+<div id="container">
+	</br>
+
+	<h3 id="movie_title" style="padding-left: 20px;"><%= items.Title %></h3>
+
+	<h5 style="padding-left: 20px;">Movie Poster</h5>
+	<img style="padding-left:20px" src="<%= items.Poster %>" alt="movie poster">
+
+	<h5 style="padding-left: 20px; padding-top: 20px">Cast</h5>
+	<p style="padding-left: 20px;"><%= items.Actors %></p>
+
+	<h5 style="padding-left: 20px;">Genre</h5>
+	<p style="padding-left: 20px;"><%= items.Genre %></p>
+
+	<h5 style="padding-left: 20px;">Plot</h5>
+	<p style="padding-left: 20px;"><%= items.Plot %></p>
+
+	<h5 style="padding-left: 20px;">Release Date</h5>
+	<p style="padding-left: 20px;"><%= items.Released %></p>
+
+	</br>
+
+	<div style="padding-left: 20px; padding-bottom:20px;">
+		<a href="#movie_review_modal" data-toggle="modal" class="btn btn-primary" onclick=openModal()>Add Review</a>
+	</div>
+</div>
+
+<script src="../resources/modal.js"></script>
+
+<div id="movie_review_modal" class="modal fade">
+	<div class="modal-dialog modal-lg">
+	  <div class="modal-content">
+		<div id="title" class="modal-header">
+		  <h4 class="modal-title">Add Review</h4>
+		</div>
+		<div class="modal-body">
+		  <form id="review" action="reviews/addReview" method="post">
+		  <div class="row" id="row_1" style="margin-left: 20px;">
+			<div class="alert alert-primary col-3" style="margin-right: 20px;">Movie Name</div>
+			<input class="form-control col-8" id="f_inp" name="f_inp" placeholder="<%= items.Title %>" value="<%= items.Title %>" readonly>
+		  </div>
+		  <div class="row" id="row_2" style="margin-left: 20px;">
+			<div class="alert alert-primary col-3" style="margin-right: 20px;">Enter Your Review Here:</div>
+			<textarea class="form-control col-8" id="f_ta" name="f_ta" rows="5"></textarea>
+		  </div>
+		  </form>
+		</div>
+		<div class="modal-footer">
+		  <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick=closeModal()>Close</button>
+		  <input class="btn btn-primary" type="submit" onclick=review.submit()>
+		</div>
+	  </div>
+	</div>
+</div>

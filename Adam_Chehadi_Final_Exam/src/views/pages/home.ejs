@@ -1,0 +1,15 @@
+<%- include('../partials/header', {my_title}); %>
+<%- include('../partials/menu'); %>
+
+        <div class="container-lg">
+            <% if (error) { %>
+                </br><div id="err" class="alert alert-danger">An error occured during search. Please try again.</div>
+            <% } else { %>
+                <%- include('../partials/movie_results', {items: items}); %>
+            <% } %>
+        </div>
+        <script src="../resources/modal.js"></script>
+    </body>
+</html>
+
+<%- include('../partials/footer'); %>
